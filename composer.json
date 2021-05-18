@@ -1,0 +1,35 @@
+{
+    "name": "sbsedv/twig-bundle",
+    "description": "A [Symfony ^5.2](https://symfony.com/) bundle that adds some commonly used filters and functions to the twig templating language.",
+    "type": "symfony-bundle",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Daniel Burger",
+            "homepage": "https://github.com/danielburger1337"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SBSEDV\\Bundle\\TwigBundle\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "symfony/framework-bundle": "^5.2",
+        "twig/twig": "^3.3"
+    },
+    "repositories": [
+        {
+            "packagist.org": false
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.composer.sbsedv.de"
+        },
+        {
+            "type": "composer",
+            "url": "https://sbsedv.repo.composer.sbsedv.de"
+        }
+    ]
+}
