@@ -11,6 +11,9 @@
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\CallStaticExtension">
             <tag name="twig.extension" />
         </service>
+        <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\PhpFunctionExtension">
+            <tag name="twig.extension" />
+        </service>
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\RandomStringExtension">
             <tag name="twig.extension" />
         </service>
