@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\TwigBundle\DependencyInjection;
 
+use SBSEDV\Bundle\TwigBundle\EventListener\TimezoneListener;
 use SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
