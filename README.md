@@ -75,3 +75,21 @@ sbsedv_twig:
     cookie_config:
         cookie_name: cookieconfig
 ```
+
+### **TimezoneListener**
+
+Sets the default timezone globally by calling `setTimeZone()` on every DateTimeInterface object.
+[More information can be found here.](https://twig.symfony.com/doc/3.x/filters/date.html#timezone)
+
+```yaml
+# config/packages/sbsedv_twig.yaml
+
+sbsedv_twig:
+    event_listeners:
+        TimezoneListener:
+            enable: true # Enabled by default
+            priority: 100 # Symfony EventListener priority
+            cookie_name: timezone # the cookie to look for
+            session_name: timezone # the session key to look for
+            header_name: X-Timezone # the header to look for
+```
