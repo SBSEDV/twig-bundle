@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\TwigBundle\EventListener;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Twig\Environment;
 use Twig\Extension\CoreExtension;
@@ -26,29 +27,35 @@ final class TimezoneListener
         $request = $event->getRequest();
 
         if ($request->headers->has($this->headerName)) {
-            $this->setTimezone($request->headers->get($this->headerName));
+            $this->setTimezone($request->headers->get($this->headerName), $request);
 
             return;
         }
 
         if ($request->cookies->has($this->cookieName)) {
-            $this->setTimezone($request->cookies->get($this->cookieName));
+            $this->setTimezone($request->cookies->get($this->cookieName), $request);
 
             return;
         }
 
         if ($request->hasPreviousSession()) {
             if ($request->getSession()->has($this->sessionName)) {
-                $this->setTimezone($request->getSession()->get($this->sessionName));
+                $this->setTimezone((string) $request->getSession()->get($this->sessionName), $request);
 
                 return;
             }
         }
     }
 
-    private function setTimezone(string $timezone): void
+    private function setTimezone(string $timezone, Request $request): void
     {
+        if (!in_array($timezone, \DateTimeZone::listIdentifiers())) {
+            return;
+        }
+
         $this->twig->getExtension(CoreExtension::class)
             ->setTimezone($timezone);
+
+        $request->attributes->set('timezone', $timezone);
     }
 }
