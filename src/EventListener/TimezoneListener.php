@@ -53,8 +53,12 @@ final class TimezoneListener
             return;
         }
 
-        $this->twig->getExtension(CoreExtension::class)
-            ->setTimezone($timezone);
+        try {
+            $this->twig->getExtension(CoreExtension::class)
+                ->setTimezone($timezone);
+        } catch (\Throwable) {
+            return;
+        }
 
         $request->attributes->set('timezone', $timezone);
     }
