@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\TwigBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -10,8 +11,17 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('sbsedv_twig');
+        $rootNode = $treeBuilder->getRootNode();
 
-        $treeBuilder->getRootNode()
+        $this->addCookieConfigSection($rootNode);
+        $this->addTimeZoneListenerSection($rootNode);
+
+        return $treeBuilder;
+    }
+
+    private function addCookieConfigSection(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode
             ->children()
                 ->arrayNode('cookie_config')
                     ->addDefaultsIfNotSet()
@@ -23,37 +33,34 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-                ->arrayNode('event_listeners')
+            ->end()
+        ;
+    }
+
+    private function addTimeZoneListenerSection(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('timezone_listener')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('TimezoneListener')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->booleanNode('enable')
-                                    ->defaultValue(true)
-                                ->end()
-                                ->integerNode('priority')
-                                    ->defaultValue(100)
-                                ->end()
-                                ->scalarNode('cookie_name')
-                                    ->cannotBeEmpty()
-                                    ->defaultValue('timezone')
-                                ->end()
-                                ->scalarNode('header_name')
-                                    ->cannotBeEmpty()
-                                    ->defaultValue('X-Timezone')
-                                ->end()
-                                ->scalarNode('session_name')
-                                    ->cannotBeEmpty()
-                                    ->defaultValue('timezone')
-                                ->end()
-                            ->end()
-                        ->end() // TimeZoneListener
+                        ->booleanNode('enabled')->defaultTrue()->end()
+                        ->integerNode('priority')->defaultValue(100)->end()
+                        ->scalarNode('cookie_name')
+                            ->cannotBeEmpty()
+                            ->defaultValue('timezone')
+                        ->end()
+                        ->scalarNode('header_name')
+                            ->cannotBeEmpty()
+                            ->defaultValue('X-Timezone')
+                        ->end()
+                        ->scalarNode('session_name')
+                            ->cannotBeEmpty()
+                            ->defaultValue('timezone')
+                        ->end()
                     ->end()
                 ->end()
             ->end()
         ;
-
-        return $treeBuilder;
     }
 }

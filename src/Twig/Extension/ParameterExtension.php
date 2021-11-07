@@ -9,7 +9,7 @@ use Twig\TwigFunction;
 class ParameterExtension extends AbstractExtension
 {
     public function __construct(
-        protected ParameterBagInterface $parameters
+        private ParameterBagInterface $parameters
     ) {
     }
 

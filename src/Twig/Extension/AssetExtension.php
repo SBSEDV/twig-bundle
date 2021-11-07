@@ -54,7 +54,7 @@ class AssetExtension extends AbstractExtension
      *
      * @return string The html-attributes as string
      */
-    protected function arrayToProperties(array $options): string
+    private function arrayToProperties(array $options): string
     {
         $properties = [];
 

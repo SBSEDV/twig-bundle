@@ -7,10 +7,10 @@ use Twig\TwigFunction;
 
 class CookieConfigExtension extends AbstractExtension
 {
-    protected ?array $decoded = null;
+    private ?array $decoded = null;
 
     public function __construct(
-        protected array $config
+        private string $cookieName
     ) {
     }
 
@@ -34,11 +34,11 @@ class CookieConfigExtension extends AbstractExtension
     public function getConfigValue(string $key): mixed
     {
         if (null === $this->decoded) {
-            if (!isset($_COOKIE[$this->config['cookie_name']])) {
+            if (!isset($_COOKIE[$this->cookieName])) {
                 return null;
             }
 
-            $this->decoded = json_decode($_COOKIE[$this->config['cookie_name']], true) ?? [];
+            $this->decoded = json_decode($_COOKIE[$this->cookieName], true) ?? [];
         }
 
         return $this->decoded[$key] ?? null;
