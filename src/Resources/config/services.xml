@@ -15,7 +15,7 @@
             <tag name="twig.extension" />
         </service>
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension">
-            <argument key="$config" />
+            <argument key="$cookieName" />
             <tag name="twig.extension" />
         </service>
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\ParameterExtension">
