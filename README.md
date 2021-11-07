@@ -29,18 +29,6 @@ Wrapper for Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInter
 parameter(string $key): mixed
 ```
 
-#### **random_string**
-
-This function generates and returns a secure pseudo-random string using the random_int function and a given keyspace.
-
-This function can take two arguments which are both optional: The length of the generated string (defaults to 32) and the used keyspace (defaults to [A-z0-9]).
-
-This function returns the generated string.
-
-```php
-random_string(int $length = 32, string $keyspace = '[A-z0-9]'): string
-```
-
 ---
 
 ### **Filters**
@@ -86,8 +74,8 @@ Sets the default timezone globally by calling `setTimeZone()` on every DateTimeI
 
 sbsedv_twig:
     event_listeners:
-        TimezoneListener:
-            enable: true # Enabled by default
+        timezone_listener:
+            enabled: true # Enabled by default
             priority: 100 # Symfony EventListener priority
             cookie_name: timezone # the cookie to look for
             session_name: timezone # the session key to look for
