@@ -5,7 +5,7 @@ namespace SBSEDV\Bundle\TwigBundle\Twig\Extension;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class PhpFunctionExtension extends AbstractExtension
+class PhpFilterExtension extends AbstractExtension
 {
     /**
      * {@inheritdoc}

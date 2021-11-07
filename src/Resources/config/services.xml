@@ -11,7 +11,7 @@
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\CallStaticExtension">
             <tag name="twig.extension" />
         </service>
-        <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\PhpFunctionExtension">
+        <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\PhpFilterExtension">
             <tag name="twig.extension" />
         </service>
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension">
