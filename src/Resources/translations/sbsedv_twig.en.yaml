@@ -1,0 +1,8 @@
+login:
+    title: Sign In
+    subtitle: You must be signed in with your SBSEDV Account in order to use this application.
+    button: Sign in with IAM
+
+footer:
+    imprint_link: Imprint
+    datapolicy_link: Datapolicy

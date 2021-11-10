@@ -8,15 +8,41 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('sbsedv_twig');
         $rootNode = $treeBuilder->getRootNode();
 
+        $this->addIamLoginSection($rootNode);
         $this->addCookieConfigSection($rootNode);
         $this->addTimeZoneListenerSection($rootNode);
 
         return $treeBuilder;
+    }
+
+    private function addIamLoginSection(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('iam_login')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('background_url')
+                            ->cannotBeEmpty()
+                            ->defaultValue('https://static.sbsedv.de/img/banner/login-background.jpg')
+                        ->end()
+                        ->arrayNode('stylesheets')
+                            ->requiresAtLeastOneElement()
+                            ->prototype('scalar')->end()
+                            ->defaultValue(['fonts.scss', 'app.scss'])
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 
     private function addCookieConfigSection(ArrayNodeDefinition $rootNode): void

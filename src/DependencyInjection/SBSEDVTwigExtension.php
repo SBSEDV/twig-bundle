@@ -28,6 +28,9 @@ class SBSEDVTwigExtension extends Extension
         $cookieConfig = $container->getDefinition(CookieConfigExtension::class);
         $cookieConfig->replaceArgument('$cookieName', $config['cookie_config']['cookie_name']);
 
+        $container->setParameter('sbsedv_twig.iam_login.background_url', $config['iam_login']['background_url']);
+        $container->setParameter('sbsedv_twig.iam_login.stylesheets', array_values($config['iam_login']['stylesheets'] ?? []));
+
         $this->handleTimeZoneListener($container, $config);
     }
 

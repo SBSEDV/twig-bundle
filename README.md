@@ -64,6 +64,8 @@ sbsedv_twig:
         cookie_name: cookieconfig
 ```
 
+---
+
 ### **TimezoneListener**
 
 Sets the default timezone globally by calling `setTimeZone()` on every DateTimeInterface object.
@@ -80,4 +82,31 @@ sbsedv_twig:
             cookie_name: timezone # the cookie to look for
             session_name: timezone # the session key to look for
             header_name: X-Timezone # the header to look for
+```
+
+---
+
+### **IAM Login Page**
+
+This bundle provides a generic login page for [IAM](https://github.com/sbsedv/iam).
+
+The route name is `sbsedv_twig_iam_login`.
+
+**Attention**: This route will only function correctly if you have the following bundles enabled:
+
+-   [sbsedv/iam-bundle](https://github.com/sbsedv/iam-bundle)
+-   [sbsedv/extra-bundle](https://github.com/sbsedv/extra-bundle) (with company_info: true)
+-   [symfony/asset](https://github.com/symfony/asset)
+
+```yaml
+# config/packages/sbsedv_twig.yaml
+
+sbsedv_twig:
+    iam_login:
+        background_url: "your_asset_path_http_uri"
+        stylesheets: ["fonts.scss", "app.scss"] # Default values
+
+# config/routes.yaml
+sbsedv_twig:
+    resource: '@SBSEDVTwigBundle/Resources/config/routes.xml'
 ```

@@ -1,0 +1,8 @@
+login:
+    title: Anmeldung
+    subtitle: Sie müssen mit Ihrem SBSEDV Account angemeldet sein, damit Sie diese Applikation verwenden können.
+    button: Mit IAM anmelden
+
+footer:
+    imprint_link: Impressum
+    datapolicy_link: Datenschutz

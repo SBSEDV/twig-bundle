@@ -5,6 +5,11 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="SBSEDV\Bundle\TwigBundle\Controller\LoginController">
+            <argument type="service" key="$twig" id="twig" />
+            <tag name="controller.service_arguments" />
+        </service>
+
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\AssetExtension">
             <tag name="twig.extension" />
         </service>
@@ -19,7 +24,7 @@
             <tag name="twig.extension" />
         </service>
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\ParameterExtension">
-            <argument type="service" key="$parameters" id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" />
+            <argument key="$parameters" type="service" id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" />
             <tag name="twig.extension" />
         </service>
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\InstanceOfExtension">
