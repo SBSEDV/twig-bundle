@@ -2,12 +2,14 @@
 
 namespace SBSEDV\Bundle\TwigBundle\EventListener;
 
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 use Twig\Environment;
 use Twig\Extension\CoreExtension;
 
-final class TimezoneListener
+final class TimezoneListener implements EventSubscriberInterface
 {
     public function __construct(
         private string $cookieName,
@@ -18,7 +20,7 @@ final class TimezoneListener
     }
 
     /**
-     * Set the default display timezone.
+     * Handle the "kernel.request" event.
      *
      * @param RequestEvent $event The request event.
      */
@@ -61,5 +63,15 @@ final class TimezoneListener
         }
 
         $request->attributes->set('timezone', $timezone);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            KernelEvents::REQUEST => ['onKernelRequest', 100],
+        ];
     }
 }

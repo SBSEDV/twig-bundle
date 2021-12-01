@@ -11,7 +11,7 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('sbsedv_twig');
         $rootNode = $treeBuilder->getRootNode();
@@ -68,10 +68,11 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('timezone_listener')
+                    ->treatFalseLike(['enabled' => false])
+                    ->treatTrueLike(['enabled' => true])
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('enabled')->defaultTrue()->end()
-                        ->integerNode('priority')->defaultValue(100)->end()
                         ->scalarNode('cookie_name')
                             ->cannotBeEmpty()
                             ->defaultValue('timezone')

@@ -16,7 +16,7 @@ class ParameterExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('parameter', fn (string $name) => $this->parameters->get($name)),

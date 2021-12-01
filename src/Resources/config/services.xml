@@ -30,12 +30,5 @@
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\InstanceOfExtension">
             <tag name="twig.extension" />
         </service>
-
-        <service id="SBSEDV\Bundle\TwigBundle\EventListener\TimezoneListener">
-            <argument key="$cookieName" />
-            <argument key="$headerName" />
-            <argument key="$sessionName" />
-            <argument type="service" key="$twig" id="twig" />
-        </service>
     </services>
 </container>
