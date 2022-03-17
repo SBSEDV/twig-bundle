@@ -40,21 +40,15 @@ final class TimezoneListener implements EventSubscriberInterface
             return;
         }
 
-        if ($request->hasPreviousSession()) {
-            if ($request->getSession()->has($this->sessionName)) {
-                $this->setTimezone((string) $request->getSession()->get($this->sessionName), $request);
+        if ($request->hasPreviousSession() && $request->getSession()->has($this->sessionName)) {
+            $this->setTimezone((string) $request->getSession()->get($this->sessionName), $request);
 
-                return;
-            }
+            return;
         }
     }
 
     private function setTimezone(string $timezone, Request $request): void
     {
-        if (!in_array($timezone, \DateTimeZone::listIdentifiers())) {
-            return;
-        }
-
         try {
             $this->twig->getExtension(CoreExtension::class)
                 ->setTimezone($timezone);
