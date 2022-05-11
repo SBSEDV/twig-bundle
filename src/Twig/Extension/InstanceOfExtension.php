@@ -20,10 +20,10 @@ class InstanceOfExtension extends AbstractExtension
     /**
      * Check if an obect is an instance of the given class.
      *
-     * @param object $value The object to test.
+     * @param mixed  $value The object to test.
      * @param string $class The class to test for.
      */
-    public function isInstanceOf(object $value, string $class): bool
+    public function isInstanceOf(mixed $value, string $class): bool
     {
         return $value instanceof $class;
     }
