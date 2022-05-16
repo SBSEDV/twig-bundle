@@ -2,7 +2,7 @@
     "name": "sbsedv/twig-bundle",
     "description": "A Symfony bundle that adds some commonly used filters and functions to the twig templating language.",
     "type": "symfony-bundle",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Daniel Burger",
