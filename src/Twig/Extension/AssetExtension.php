@@ -30,7 +30,7 @@ class AssetExtension extends AbstractExtension
      */
     public function createStylesheet(string $href, string $type = 'text/css', string $rel = 'stylesheet', array $options = []): string
     {
-        return trim("<link type='{$type}' rel='{$rel}' href='{$href}' {$this->arrayToProperties($options)}").' />';
+        return \trim("<link type='{$type}' rel='{$rel}' href='{$href}' {$this->arrayToProperties($options)}").' />';
     }
 
     /**
@@ -44,7 +44,7 @@ class AssetExtension extends AbstractExtension
      */
     public function createJavascript(string $src, string $type = 'text/javascript', array $options = ['defer']): string
     {
-        return trim("<script type='{$type}' src='{$src}' {$this->arrayToProperties($options)}").'></script>';
+        return \trim("<script type='{$type}' src='{$src}' {$this->arrayToProperties($options)}").'></script>';
     }
 
     /**
@@ -59,7 +59,7 @@ class AssetExtension extends AbstractExtension
         $properties = [];
 
         foreach ($options as $key => $value) {
-            if (is_int($key)) {
+            if (\is_int($key)) {
                 $properties[] = $value;
                 continue;
             }
@@ -67,6 +67,6 @@ class AssetExtension extends AbstractExtension
             $properties[] = "{$key}=\"{$value}\"";
         }
 
-        return implode(' ', $properties);
+        return \implode(' ', $properties);
     }
 }

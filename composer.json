@@ -15,22 +15,38 @@
         }
     },
     "require": {
-        "php": ">=8.0",
-        "symfony/framework-bundle": "^5.2|^6.0",
-        "symfony/translation": "^5.2|^6.0",
+        "php": "^8.0",
+        "symfony/framework-bundle": "^5.2 || ^6.0",
+        "symfony/translation": "^5.2 || ^6.0",
         "twig/twig": "^3.3"
+    },
+    "require-dev": {
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan-symfony": "^1.1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     },
     "repositories": [
         {
-            "packagist.org": false
+            "type": "composer",
+            "url": "https://sbsedv.repo.composer.sbsedv.de"
         },
         {
             "type": "composer",
             "url": "https://repo.composer.sbsedv.de"
         },
         {
-            "type": "composer",
-            "url": "https://sbsedv.repo.composer.sbsedv.de"
+            "packagist.org": false
         }
     ]
 }

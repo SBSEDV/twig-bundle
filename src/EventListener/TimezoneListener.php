@@ -28,22 +28,27 @@ final class TimezoneListener implements EventSubscriberInterface
     {
         $request = $event->getRequest();
 
-        if ($request->headers->has($this->headerName)) {
-            $this->setTimezone($request->headers->get($this->headerName), $request);
+        $header = $request->headers->get($this->headerName);
+        if (\is_string($header)) {
+            $this->setTimezone($header, $request);
 
             return;
         }
 
-        if ($request->cookies->has($this->cookieName)) {
-            $this->setTimezone($request->cookies->get($this->cookieName), $request);
+        $cookie = $request->headers->get($this->cookieName);
+        if (\is_string($cookie)) {
+            $this->setTimezone($cookie, $request);
 
             return;
         }
 
-        if ($request->hasPreviousSession() && $request->getSession()->has($this->sessionName)) {
-            $this->setTimezone((string) $request->getSession()->get($this->sessionName), $request);
+        if ($request->hasPreviousSession()) {
+            $session = $request->getSession()->get($this->sessionName);
+            if (\is_string($session)) {
+                $this->setTimezone($session, $request);
 
-            return;
+                return;
+            }
         }
     }
 

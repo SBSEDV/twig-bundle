@@ -14,7 +14,7 @@ class PhpFilterExtension extends AbstractExtension
     {
         return [
             new TwigFilter('str_pad', 'str_pad'),
-            new TwigFilter('url_decode', 'url_decode'),
+            new TwigFilter('url_decode', 'url_decode'), // @phpstan-ignore-line
             new TwigFilter('basename', 'basename'),
             new TwigFilter('pathinfo', 'pathinfo'),
         ];

@@ -38,9 +38,9 @@ class CookieConfigExtension extends AbstractExtension
                 return null;
             }
 
-            $this->decoded = json_decode($_COOKIE[$this->cookieName], true) ?? [];
+            $this->decoded = \json_decode($_COOKIE[$this->cookieName], true) ?? []; // @phpstan-ignore-line
         }
 
-        return $this->decoded[$key] ?? null;
+        return $this->decoded[$key] ?? null; // @phpstan-ignore-line
     }
 }
