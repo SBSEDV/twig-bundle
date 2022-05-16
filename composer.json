@@ -35,18 +35,5 @@
         "allow-plugins": {
             "phpstan/extension-installer": true
         }
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://sbsedv.repo.composer.sbsedv.de"
-        },
-        {
-            "type": "composer",
-            "url": "https://repo.composer.sbsedv.de"
-        },
-        {
-            "packagist.org": false
-        }
-    ]
+    }
 }
