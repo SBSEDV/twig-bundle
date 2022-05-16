@@ -5,11 +5,6 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="SBSEDV\Bundle\TwigBundle\Controller\LoginController">
-            <argument type="service" key="$twig" id="twig" />
-            <tag name="controller.service_arguments" />
-        </service>
-
         <service id="SBSEDV\Bundle\TwigBundle\Twig\Extension\AssetExtension">
             <tag name="twig.extension" />
         </service>
