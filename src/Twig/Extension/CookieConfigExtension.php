@@ -20,7 +20,7 @@ class CookieConfigExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('cookie_config', [$this, 'getConfigValue']),
+            new TwigFunction('cookie_config', $this->getConfigValue(...)),
         ];
     }
 

@@ -13,7 +13,7 @@ class CallStaticExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('call_static', [$this, 'callStatic']),
+            new TwigFunction('call_static', $this->callStatic(...)),
         ];
     }
 
