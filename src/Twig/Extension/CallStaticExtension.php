@@ -29,7 +29,7 @@ class CallStaticExtension extends AbstractExtension
     public function callStatic(string $class, string $method, mixed ...$args): mixed
     {
         if (!\class_exists($class) || !\method_exists($class, $method)) {
-            throw new \InvalidArgumentException("Can not call static method {$method} on Class {$class}.");
+            throw new \InvalidArgumentException(\sprintf('Can not call static method %s on Class %s.', $method, $class));
         }
 
         return \forward_static_call_array([$class, $method], $args); // @phpstan-ignore-line
