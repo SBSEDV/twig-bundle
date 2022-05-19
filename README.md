@@ -78,7 +78,6 @@ sbsedv_twig:
     event_listeners:
         timezone_listener:
             enabled: true # Enabled by default
-            priority: 100 # Symfony EventListener priority
             cookie_name: timezone # the cookie to look for
             session_name: timezone # the session key to look for
             header_name: X-Timezone # the header to look for
