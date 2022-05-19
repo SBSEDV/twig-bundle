@@ -6,10 +6,10 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class ParameterExtension extends AbstractExtension
+class ParameterBagExtension extends AbstractExtension
 {
     public function __construct(
-        private ParameterBagInterface $parameters
+        private ParameterBagInterface $parameterBag
     ) {
     }
 
@@ -19,7 +19,7 @@ class ParameterExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('parameter', fn (string $name) => $this->parameters->get($name)),
+            new TwigFunction('parameter', fn (string $name) => $this->parameterBag->get($name)),
         ];
     }
 }
