@@ -66,9 +66,9 @@ sbsedv_twig:
 
 ---
 
-### **TimezoneListener**
+### **TimezoneEventListener**
 
-Sets the default timezone globally by calling `setTimeZone()` on every DateTimeInterface object.
+Sets the default timezone used by twigs date filter.
 [More information can be found here.](https://twig.symfony.com/doc/3.x/filters/date.html#timezone)
 
 ```yaml

@@ -2,7 +2,7 @@
 
 namespace SBSEDV\Bundle\TwigBundle\DependencyInjection;
 
-use SBSEDV\Bundle\TwigBundle\EventListener\TimezoneListener;
+use SBSEDV\Bundle\TwigBundle\EventListener\TimezoneEventListener;
 use SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -26,28 +26,32 @@ class SBSEDVTwigExtension extends Extension
 
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        $cookieConfig = $container->getDefinition(CookieConfigExtension::class);
-        $cookieConfig->replaceArgument('$cookieName', $config['cookie_config']['cookie_name']);
+        $container
+            ->getDefinition(CookieConfigExtension::class)
+            ->replaceArgument('$cookieName', $config['cookie_config']['cookie_name'])
+        ;
 
-        $this->confiugureTimezoneListener($container, $config);
+        $this->confiugureTimezoneEventListener($container, $config);
     }
 
     /**
-     * Configure the "SBSEDV\Bundle\TwigBundle\EventListener\TimezoneListener" service.
+     * Configure the "SBSEDV\Bundle\TwigBundle\EventListener\TimezoneEventListener" service.
      */
-    private function confiugureTimezoneListener(ContainerBuilder $container, array $config): void
+    private function confiugureTimezoneEventListener(ContainerBuilder $container, array $config): void
     {
         if (@$config['timezone_listener']['enabled'] !== true) {
             return;
         }
 
-        $definition = new Definition(TimezoneListener::class);
-        $definition->setArgument('$cookieName', $config['timezone_listener']['cookie_name']);
-        $definition->setArgument('$headerName', $config['timezone_listener']['header_name']);
-        $definition->setArgument('$sessionName', $config['timezone_listener']['session_name']);
-        $definition->setArgument('$twig', new Reference('twig'));
-        $definition->addTag('kernel.event_subscriber');
-
-        $container->setDefinition(TimezoneListener::class, $definition);
+        $container
+            ->setDefinition(TimezoneEventListener::class, new Definition(TimezoneEventListener::class))
+            ->setArguments([
+                '$cookieName' => $config['timezone_listener']['cookie_name'],
+                '$headerName' => $config['timezone_listener']['header_name'],
+                '$sessionName' => $config['timezone_listener']['session_name'],
+                '$twig' => new Reference('twig'),
+            ])
+            ->addTag('kernel.event_subscriber')
+        ;
     }
 }

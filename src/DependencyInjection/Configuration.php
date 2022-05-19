@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
 
         $this->addCookieConfigSection($rootNode);
-        $this->addTimeZoneListenerSection($rootNode);
+        $this->addTimeZoneEventListenerSection($rootNode);
 
         return $treeBuilder;
     }
@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addTimeZoneListenerSection(ArrayNodeDefinition $rootNode): void
+    private function addTimeZoneEventListenerSection(ArrayNodeDefinition $rootNode): void
     {
         $rootNode
             ->children()

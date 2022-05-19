@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Twig\Environment;
 use Twig\Extension\CoreExtension;
 
-final class TimezoneListener implements EventSubscriberInterface
+final class TimezoneEventListener implements EventSubscriberInterface
 {
     public function __construct(
         private string $cookieName,
