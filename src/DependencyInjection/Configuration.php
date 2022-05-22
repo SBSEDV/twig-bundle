@@ -16,28 +16,9 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder('sbsedv_twig');
         $rootNode = $treeBuilder->getRootNode();
 
-        $this->addCookieConfigSection($rootNode);
         $this->addTimeZoneEventListenerSection($rootNode);
 
         return $treeBuilder;
-    }
-
-    private function addCookieConfigSection(ArrayNodeDefinition $rootNode): void
-    {
-        $rootNode
-            ->children()
-                ->arrayNode('cookie_config')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('cookie_name')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                            ->defaultValue('cookieconfig')
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
     }
 
     private function addTimeZoneEventListenerSection(ArrayNodeDefinition $rootNode): void

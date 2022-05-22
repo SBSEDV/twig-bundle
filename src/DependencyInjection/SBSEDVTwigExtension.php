@@ -3,7 +3,6 @@
 namespace SBSEDV\Bundle\TwigBundle\DependencyInjection;
 
 use SBSEDV\Bundle\TwigBundle\EventListener\TimezoneEventListener;
-use SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -25,11 +24,6 @@ class SBSEDVTwigExtension extends Extension
         $loader->load('services.xml');
 
         $config = $this->processConfiguration(new Configuration(), $configs);
-
-        $container
-            ->getDefinition(CookieConfigExtension::class)
-            ->replaceArgument('$cookieName', $config['cookie_config']['cookie_name'])
-        ;
 
         $this->confiugureTimezoneEventListener($container, $config);
     }

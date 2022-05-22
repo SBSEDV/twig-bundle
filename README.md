@@ -44,28 +44,6 @@ This bundle also registers the following native PHP functions as twig filters:
 
 ---
 
-### Cookie Config
-
-Many applications save user preferences in a json object in cookies (e.g color scheme, cookie compliance, menu opened / closed etc.).
-
-This bundle has a convinient method to access those values stored in this cookie but it requires that you use a JSON-object as cookie value:
-
-```php
-{{ cookie_config('key') }} // => value OR null
-```
-
-By default, this method looks for a cookie named "`cookieconfig`".
-You can overwrite the cookie name in your application with:
-
-```yaml
-# config/packages/sbsedv_twig.yaml
-sbsedv_twig:
-    cookie_config:
-        cookie_name: cookieconfig
-```
-
----
-
 ### **TimezoneEventListener**
 
 Sets the default timezone used by twigs date filter.
