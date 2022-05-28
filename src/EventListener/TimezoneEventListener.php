@@ -42,7 +42,7 @@ final class TimezoneEventListener implements EventSubscriberInterface
             return;
         }
 
-        if ($request->hasPreviousSession()) {
+        if ($request->hasSession(true)) {
             $session = $request->getSession()->get($this->sessionName);
             if (\is_string($session)) {
                 $this->setTimezone($session, $request);
