@@ -15,9 +15,9 @@
         }
     },
     "require": {
-        "php": "^8.1",
-        "symfony/framework-bundle": "^6.0",
-        "symfony/translation": "^6.0",
+        "php": ">=8.1",
+        "symfony/framework-bundle": "^6.1",
+        "symfony/translation": "^6.1",
         "twig/twig": "^3.3"
     },
     "require-dev": {

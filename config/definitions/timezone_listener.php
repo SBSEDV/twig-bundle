@@ -1,29 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace SBSEDV\Bundle\TwigBundle\DependencyInjection;
+namespace Symfony\Component\Config\Definition\Configurator;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
-
-class Configuration implements ConfigurationInterface
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder(): TreeBuilder
-    {
-        $treeBuilder = new TreeBuilder('sbsedv_twig');
-        $rootNode = $treeBuilder->getRootNode();
-
-        $this->addTimeZoneEventListenerSection($rootNode);
-
-        return $treeBuilder;
-    }
-
-    private function addTimeZoneEventListenerSection(ArrayNodeDefinition $rootNode): void
-    {
-        $rootNode
+return function (DefinitionConfigurator $definition): void {
+    $definition
+        ->rootNode()
             ->children()
                 ->arrayNode('timezone_listener')
                     ->treatFalseLike(['enabled' => false])
@@ -46,6 +27,6 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
-        ;
-    }
-}
+        ->end()
+    ;
+};
