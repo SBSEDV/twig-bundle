@@ -35,7 +35,7 @@ final class TimezoneEventListener implements EventSubscriberInterface
             return;
         }
 
-        $cookie = $request->headers->get($this->cookieName);
+        $cookie = $request->cookies->get($this->cookieName);
         if (\is_string($cookie)) {
             $this->setTimezone($cookie, $request);
 
@@ -56,7 +56,8 @@ final class TimezoneEventListener implements EventSubscriberInterface
     {
         try {
             $this->twig->getExtension(CoreExtension::class)
-                ->setTimezone($timezone);
+                ->setTimezone($timezone)
+            ;
         } catch (\Throwable) {
             return;
         }
