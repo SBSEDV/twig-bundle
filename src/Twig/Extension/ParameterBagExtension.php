@@ -19,7 +19,7 @@ class ParameterBagExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('parameter', fn (string $name) => $this->parameterBag->get($name)),
+            new TwigFunction('parameter', $this->parameterBag->get(...)),
         ];
     }
 }
