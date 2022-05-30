@@ -1,6 +1,6 @@
 {
     "name": "sbsedv/twig-bundle",
-    "description": "A Symfony bundle that adds some commonly used filters and functions to the twig templating language.",
+    "description": "A Symfony ^6.1 bundle that adds some commonly used filters and functions to the twig templating language.",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
