@@ -19,11 +19,11 @@ final class TimezoneEventListener implements EventSubscriberInterface
     }
 
     /**
-     * Handle the "kernel.request" event.
+     * Set the users default timezone.
      *
-     * @param RequestEvent $event The request event.
+     * @param RequestEvent $event The "kernel.request" event.
      */
-    public function onKernelRequest(RequestEvent $event): void
+    public function __invoke(RequestEvent $event): void
     {
         $request = $event->getRequest();
 
@@ -70,7 +70,7 @@ final class TimezoneEventListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            RequestEvent::class => ['onKernelRequest', 100],
+            RequestEvent::class => ['__invoke', 100],
         ];
     }
 }
