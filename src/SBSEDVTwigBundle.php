@@ -3,6 +3,7 @@
 namespace SBSEDV\Bundle\TwigBundle;
 
 use SBSEDV\Bundle\TwigBundle\EventListener\TimezoneEventListener;
+use SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -15,7 +16,7 @@ class SBSEDVTwigBundle extends AbstractBundle
      */
     public function configure(DefinitionConfigurator $definition): void
     {
-        $definition->import('../config/definitions/timezone_listener.php');
+        $definition->import('../config/definitions/*.php');
     }
 
     /**
@@ -34,5 +35,9 @@ class SBSEDVTwigBundle extends AbstractBundle
                 ->arg('$sessionName', $config['timezone_listener']['session_name'])
             ;
         }
+
+        $builder->getDefinition(CookieConfigExtension::class)
+            ->replaceArgument('$cookieName', $config['cookie_config_extension']['cookie_name'])
+        ;
     }
 }
