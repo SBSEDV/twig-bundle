@@ -60,3 +60,20 @@ sbsedv_twig:
             session_name: timezone # the session key to look for
             header_name: X-Timezone # the header to look for
 ```
+
+---
+
+### **LocalizationEventListener**
+
+Sets locale specific default options for the "numer_format" and "date" filter.
+
+Values are definied in the `sbsedv_twig` translation domain. See [here](translations/sbsedv_twig.en.yaml).
+
+```yaml
+# config/packages/sbsedv_twig.yaml
+
+sbsedv_twig:
+    event_listeners:
+        localization_listener:
+            enabled: true # Enabled by default
+```

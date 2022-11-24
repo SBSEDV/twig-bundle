@@ -17,7 +17,7 @@ final class LocalizationEventListener implements EventSubscriberInterface
     }
 
     /**
-     * Set the users default timezone.
+     * Set locale specific default options.
      *
      * @param RequestEvent $event The "kernel.request" event.
      */
