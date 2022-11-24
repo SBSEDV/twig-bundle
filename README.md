@@ -21,12 +21,13 @@ This function returns the return value of the forwarded call.
 call_static(string $class, string $method, mixed ...$args): mixed
 ```
 
-#### **parameter**
+#### **parameter** and **has_parameter**
 
 Wrapper for Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface.
 
 ```php
 parameter(string $key): mixed
+has_parameter(string $key): bool
 ```
 
 ---
