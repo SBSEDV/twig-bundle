@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\TwigBundle;
 
+use SBSEDV\Bundle\TwigBundle\EventListener\LocalizationEventListener;
 use SBSEDV\Bundle\TwigBundle\EventListener\TimezoneEventListener;
 use SBSEDV\Bundle\TwigBundle\Twig\Extension\CookieConfigExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
@@ -25,15 +26,20 @@ class SBSEDVTwigBundle extends AbstractBundle
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->import('../config/services/extensions.php');
+        $container->import('../config/services/event_listener.php');
 
         if ($config['timezone_listener']['enabled']) {
-            $container->import('../config/services/timezone_listener.php');
-
             $container->services()->get(TimezoneEventListener::class)
                 ->arg('$cookieName', $config['timezone_listener']['cookie_name'])
                 ->arg('$headerName', $config['timezone_listener']['header_name'])
                 ->arg('$sessionName', $config['timezone_listener']['session_name'])
             ;
+        } else {
+            $container->services()->remove(TimezoneEventListener::class);
+        }
+
+        if (!$config['localization_listener']['enabled']) {
+            $container->services()->remove(LocalizationEventListener::class);
         }
 
         $builder->getDefinition(CookieConfigExtension::class)

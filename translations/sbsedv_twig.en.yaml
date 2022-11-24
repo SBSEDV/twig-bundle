@@ -1,0 +1,8 @@
+number_format:
+    decimal_places: 0
+    decimal_point: "."
+    thousand_seperator: ","
+
+date_format:
+    date: F j, Y H:i
+    date_interval: "%d days"
