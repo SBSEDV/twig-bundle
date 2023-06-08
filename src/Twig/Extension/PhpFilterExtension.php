@@ -7,9 +7,6 @@ use Twig\TwigFilter;
 
 class PhpFilterExtension extends AbstractExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getFilters(): array
     {
         return [

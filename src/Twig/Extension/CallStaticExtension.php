@@ -7,9 +7,6 @@ use Twig\TwigFunction;
 
 class CallStaticExtension extends AbstractExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         return [

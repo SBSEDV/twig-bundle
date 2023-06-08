@@ -17,9 +17,6 @@ class CookieConfigExtension extends AbstractExtension implements ResetInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         return [
@@ -51,9 +48,6 @@ class CookieConfigExtension extends AbstractExtension implements ResetInterface
         return $this->decoded[$key] ?? null; // @phpstan-ignore-line
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function reset(): void
     {
         $this->decoded = null;

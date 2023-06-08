@@ -7,9 +7,6 @@ use Twig\TwigTest;
 
 class InstanceOfExtension extends AbstractExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getTests(): array
     {
         return [
