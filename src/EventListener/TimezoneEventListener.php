@@ -64,9 +64,6 @@ final class TimezoneEventListener implements EventSubscriberInterface
         $request->attributes->set('timezone', $timezone);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents(): array
     {
         return [

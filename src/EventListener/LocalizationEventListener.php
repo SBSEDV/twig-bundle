@@ -12,7 +12,7 @@ final class LocalizationEventListener implements EventSubscriberInterface
 {
     public function __construct(
         private Environment $twig,
-        private ?TranslatorInterface $translator,
+        private TranslatorInterface $translator,
     ) {
     }
 
@@ -23,10 +23,6 @@ final class LocalizationEventListener implements EventSubscriberInterface
      */
     public function __invoke(RequestEvent $event): void
     {
-        if (null === $this->translator) {
-            return;
-        }
-
         /** @var CoreExtension */
         $coreExtension = $this->twig->getExtension(CoreExtension::class);
 
@@ -42,9 +38,6 @@ final class LocalizationEventListener implements EventSubscriberInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents(): array
     {
         return [
