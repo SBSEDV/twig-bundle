@@ -23,7 +23,6 @@ final class LocalizationEventListener implements EventSubscriberInterface
      */
     public function __invoke(RequestEvent $event): void
     {
-        /** @var CoreExtension */
         $coreExtension = $this->twig->getExtension(CoreExtension::class);
 
         $coreExtension->setNumberFormat(
