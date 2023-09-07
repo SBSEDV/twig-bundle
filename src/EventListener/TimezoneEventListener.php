@@ -11,10 +11,10 @@ use Twig\Extension\CoreExtension;
 final class TimezoneEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private string $cookieName,
-        private string $headerName,
-        private string $sessionName,
-        private Environment $twig
+        private readonly string $cookieName,
+        private readonly string $headerName,
+        private readonly string $sessionName,
+        private readonly Environment $twig
     ) {
     }
 

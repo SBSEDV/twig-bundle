@@ -11,8 +11,8 @@ use Twig\Extension\CoreExtension;
 final class LocalizationEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private Environment $twig,
-        private TranslatorInterface $translator,
+        private readonly Environment $twig,
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
