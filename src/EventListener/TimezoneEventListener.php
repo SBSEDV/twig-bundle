@@ -14,7 +14,7 @@ final class TimezoneEventListener implements EventSubscriberInterface
         private readonly string $cookieName,
         private readonly string $headerName,
         private readonly string $sessionName,
-        private readonly Environment $twig
+        private readonly Environment $twig,
     ) {
     }
 

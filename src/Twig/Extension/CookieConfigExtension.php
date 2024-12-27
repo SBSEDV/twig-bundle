@@ -13,7 +13,7 @@ class CookieConfigExtension extends AbstractExtension implements ResetInterface
 
     public function __construct(
         private readonly RequestStack $requestStack,
-        private readonly string $cookieName
+        private readonly string $cookieName,
     ) {
     }
 
