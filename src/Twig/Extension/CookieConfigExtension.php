@@ -9,6 +9,7 @@ use Twig\TwigFunction;
 
 class CookieConfigExtension extends AbstractExtension implements ResetInterface
 {
+    /** @var array<array-key, mixed>|null */
     private ?array $decoded = null;
 
     public function __construct(
@@ -39,13 +40,13 @@ class CookieConfigExtension extends AbstractExtension implements ResetInterface
             if (null !== $request && $request->cookies->has($this->cookieName)) {
                 $cookie = (string) $request->cookies->get($this->cookieName);
 
-                $this->decoded = \json_decode($cookie, true) ?? []; // @phpstan-ignore-line
+                $this->decoded = \json_decode($cookie, true) ?? []; // @phpstan-ignore assign.propertyType
             } else {
                 $this->decoded = [];
             }
         }
 
-        return $this->decoded[$key] ?? null; // @phpstan-ignore-line
+        return $this->decoded[$key] ?? null;
     }
 
     public function reset(): void
