@@ -17,6 +17,22 @@ class SBSEDVTwigBundle extends AbstractBundle
         $definition->import('../config/definitions/*.php');
     }
 
+    /**
+     * @param array{
+     *      timezone_listener: array{
+     *          enabled: bool,
+     *          cookie_name: string,
+     *          header_name: string,
+     *          session_name: string
+     *      },
+     *      localization_listener: array{
+     *          enabled: bool
+     *      },
+     *      cookie_config_extension: array{
+     *          cookie_name: string
+     *      }
+     * } $config
+     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->import('../config/services/extensions.php');
