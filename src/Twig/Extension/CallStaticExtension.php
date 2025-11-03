@@ -29,6 +29,6 @@ class CallStaticExtension extends AbstractExtension
             throw new \InvalidArgumentException(\sprintf('Can not call static method %s on Class %s.', $method, $class));
         }
 
-        return \forward_static_call_array([$class, $method], $args); // @phpstan-ignore-line
+        return \forward_static_call_array([$class, $method], $args); // @phpstan-ignore argument.type
     }
 }
