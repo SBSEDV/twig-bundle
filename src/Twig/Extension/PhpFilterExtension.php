@@ -10,10 +10,10 @@ class PhpFilterExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('str_pad', 'str_pad'),
-            new TwigFilter('url_decode', 'url_decode'), // @phpstan-ignore-line
-            new TwigFilter('basename', 'basename'),
-            new TwigFilter('pathinfo', 'pathinfo'),
+            new TwigFilter('str_pad', str_pad(...)),
+            new TwigFilter('url_decode', urldecode(...)),
+            new TwigFilter('basename', basename(...)),
+            new TwigFilter('pathinfo', pathinfo(...)),
         ];
     }
 }
