@@ -1,4 +1,4 @@
-name: PHPCS-Fixer
+name: PHPCSFixer
 
 on:
     pull_request:
@@ -16,7 +16,7 @@ jobs:
                 operating-system: [ubuntu-latest]
                 php-versions: ["8.2"]
 
-        name: PHP ${{ matrix.php-versions }} CS-Fixer ${{ matrix.operating-system }}
+        name: PHPCSFixer with PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
 
         steps:
             - uses: actions/checkout@v3
@@ -29,5 +29,5 @@ jobs:
             - name: Install Composer packages
               run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-            - name: Run PHP-CS-Fixer
+            - name: Run PHPCSFixer
               run: $GITHUB_WORKSPACE/vendor/bin/php-cs-fixer fix --dry-run

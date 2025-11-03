@@ -1,5 +1,5 @@
 [![PHPStan](https://github.com/SBSEDV/twig-bundle/actions/workflows/phpstan.yml/badge.svg)](https://github.com/SBSEDV/twig-bundle/actions/workflows/phpstan.yml)
-[![PHPCS-Fixer](https://github.com/SBSEDV/twig-bundle/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/SBSEDV/twig-bundle/actions/workflows/phpcsfixer.yml)
+[![PHPCSFixer](https://github.com/SBSEDV/twig-bundle/actions/workflows/phpcsfixer.yaml/badge.svg)](https://github.com/SBSEDV/twig-bundle/actions/workflows/phpcsfixer.yaml)
 
 # sbsedv/twig-bundle
 
