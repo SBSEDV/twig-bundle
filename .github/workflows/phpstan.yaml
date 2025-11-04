@@ -14,9 +14,9 @@ jobs:
         strategy:
             matrix:
                 operating-system: [ubuntu-latest]
-                php-versions: ["8.1", "8.2"]
+                php-versions: ["8.2", "8.3", "8.4"]
 
-        name: PHP ${{ matrix.php-versions }} Static Analysis on ${{ matrix.operating-system }}
+        name: PHPStan with PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
 
         steps:
             - uses: actions/checkout@v3
@@ -29,5 +29,5 @@ jobs:
             - name: Install Composer packages
               run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-            - name: Run PHPSTAN
-              run: $GITHUB_WORKSPACE/vendor/bin/phpstan --level=9 --error-format=github
+            - name: Run PHPStan
+              run: $GITHUB_WORKSPACE/vendor/bin/phpstan --error-format=github
