@@ -3,7 +3,7 @@
 namespace Symfony\Component\Config\Definition\Configurator;
 
 return function (DefinitionConfigurator $definition): void {
-    $definition // @phpstan-ignore method.notFound
+    $definition
         ->rootNode()
             ->children()
                 ->arrayNode('cookie_config_extension')
